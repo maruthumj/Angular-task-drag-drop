@@ -15,8 +15,7 @@ import { PopupServiceService } from './popup-service.service';
   
 })
 export class AppComponent{
-BeginningArray:string[]=[];
-EndArray:string[]=[];
+
 done:string[]=['Feed Cat','Ride Bike'];
   doing:string[]=['study',];
   todo:string[]=["Get to work",
@@ -67,21 +66,21 @@ constructor(public popUpservice: PopupServiceService,public dialogRef:MatDialog)
     if(arrName==='todo')
     
       {
-        let begining=this.todo.slice(0,index);
-        begining.push(...this.todo.slice(index+1,this.todo.length));
-        this.todo=begining;
+        let beginning=this.todo.slice(0,index);
+        beginning.push(...this.todo.slice(index+1,this.todo.length));
+        this.todo=beginning;
       }
       else if(arrName==='done')
       {
-        let begining=this.done.slice(0,index);
-        begining.push(...this.done.slice(index+1,this.done.length));
-        this.done=begining;
+        let beginning=this.done.slice(0,index);
+        beginning.push(...this.done.slice(index+1,this.done.length));
+        this.done=beginning;
       }
       else
       { 
-        let begining=this.doing.slice(0,index);
-        begining.push(...this.doing.slice(index+1,this.done.length));
-        this.doing=begining;
+        let beginning=this.doing.slice(0,index);
+        beginning.push(...this.doing.slice(index+1,this.done.length));
+        this.doing=beginning;
       }
       //  this.BeginningArray.push(arrName.slice(index,index+1));
       //  this.EndArray.push(arrName.slice(index+1,arrName.length));
