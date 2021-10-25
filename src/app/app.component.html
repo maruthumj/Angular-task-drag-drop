@@ -1,0 +1,66 @@
+<div class="heading" color="Primary">
+  <h2 style="text-decoration: dotted, sans-serif;text-align: center;color:aliceblue;">Angular Drag & Drop</h2>
+</div>
+<div class="homepage" >
+  <div class="todo"><h2 style="text-decoration: underline;   background: linear-gradient(
+            to right, #f32170, #ff6b08,#22c1c3,#fdbb2d
+             ); -webkit-text-fill-color: transparent;
+        animation-duration: 2s;
+        animation-direction: alternate;
+       -webkit-animation-direction: alternate;
+       background-clip: text;
+        -webkit-background-clip: text; text-decoration: underline;">To-do</h2>
+      <div class="example-container">
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList,doingList]" 
+          class="example-list" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of todo, let i=index" cdkDrag>{{item}} <i (click)="RemoveArray('todo',i)" i-bs name="trash-fill" style="color:#B00020"></i> </div>
+        </div>
+      </div>
+  <div class="add-raised-button"><button mat-button style="border: 1px solid #388E3C; color:#388E3C" (click)="openDialog('todo')" addItem cdkDrag>Add<i
+      i-bs name="bag-plus-fill" style="color:#388E3C; margin-left:1px"></i></button></div>
+  </div>
+      
+      <div class="doing">
+        <h2 style="text-decoration: underline;   background: linear-gradient(
+                  to right, #f32170, #ff6b08,#22c1c3,#fdbb2d
+                   );; -webkit-text-fill-color: transparent;
+              animation-duration: 2s;
+              animation-direction: alternate;
+             -webkit-animation-direction: alternate;
+             background-clip: text;
+              -webkit-background-clip: text;
+              text-decoration: underline">Doing</h2>
+            <div class="example-container">
+              <div cdkDropList #doingList="cdkDropList" [cdkDropListData]="doing" [cdkDropListConnectedTo]="[doneList,todoList]"
+                class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of doing, let i=index"  cdkDrag>{{item}} <i (click)="RemoveArray('doing',i)" i-bs name="trash-fill" style="color:#B00020"></i></div>
+              </div>
+            </div>
+            <div class="add-raised-button"><button mat-button style="border: 1px solid #388E3C; color:#388E3C" (click)="openDialog('doing')" addItem cdkDrag>Add<i
+                i-bs name="bag-plus-fill" style="color:#388E3C; margin-left:1px"></i></button></div>
+            </div>
+      
+      <div class="done"><h2 style="text-decoration: underline;   background: linear-gradient(
+            to right, #f32170, #ff6b08,#22c1c3,#fdbb2d
+             );; -webkit-text-fill-color: transparent;
+        animation-duration: 2s;
+        animation-direction: alternate;
+       -webkit-animation-direction: alternate;
+       background-clip: text;
+        -webkit-background-clip: text;
+        text-decoration: underline">Done</h2>
+
+
+
+<div class="example-container"><div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList,doingList]"
+  class="example-list" (cdkDropListDropped)="drop($event)">
+  
+    <div class="example-box" *ngFor="let item of done, let i=index" cdkDrag>{{item}} <i (click)="RemoveArray('done',i)" i-bs name="trash-fill" style="color:#B00020"></i></div>
+  
+</div>
+
+</div>   
+<div class="add-raised-button"><button mat-button style="border: 1px solid #388E3C; color:#388E3C" (click)="openDialog('done')" addItem cdkDrag>Add<i
+    i-bs name="bag-plus-fill" style="color:#388E3C; margin-left:1px"></i></button></div>
+</div>
+
