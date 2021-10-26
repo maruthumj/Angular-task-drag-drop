@@ -2,7 +2,6 @@ import { AfterViewChecked, Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PopupServiceService } from '../popup-service.service';
 
-
 @Component({
   selector: 'app-pop-up-component',
   templateUrl: './pop-up-component.component.html',
@@ -25,6 +24,10 @@ constructor(private popUpservice: PopupServiceService, public dialogRef: MatDial
        
   } 
   
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
   onclick(){
     if(this.text)
     { 
@@ -32,10 +35,4 @@ constructor(private popUpservice: PopupServiceService, public dialogRef: MatDial
     else
       this.isnotvalid=true;
   }
-  
-
-
- 
-  
-
 }

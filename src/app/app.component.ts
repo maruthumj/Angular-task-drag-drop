@@ -30,9 +30,6 @@ done:string[]=['Feed Cat','Ride Bike'];
 
 
 constructor(public popUpservice: PopupServiceService,public dialogRef:MatDialog){
-  // popUpservice.doneListval.subscribe(val=>this.done=val);
-  // popUpservice.doingListval.subscribe(val=>this.doing=val);
-  // popUpservice.todoListval.subscribe(val=>this.todo=val);
   
 }
   
@@ -41,17 +38,22 @@ constructor(public popUpservice: PopupServiceService,public dialogRef:MatDialog)
  openDialog(val:string){
    this.popUpservice.changeType(val);
    console.log(val);
-    const dialog = this.dialogRef.open(PopUpComponentComponent);
-    dialog.afterClosed().subscribe((result:string) => {
-      console.log(result);
-        
-      if(val==="todo"){
-        
-        this.todo.push(result);
+    const dialog = this.dialogRef.open(PopUpComponentComponent, 
+      
+      );
+    dialog.afterClosed().subscribe(result => {
+     // console.log(result.length);
+       const isWhitespace = (result|| '').trim().length === 0;
+       const isValid = !isWhitespace;
+      
+         if(result && isValid) {
+
+          if(val==="todo"){
+                this.todo.push(result);
         this.todo.slice(0);
         console.log(this.todo);
       }
-      else if(val==='doing'){
+     else if(val==="doing"){
         this.doing.push(result);
         console.log(this.doing);
       }
@@ -59,10 +61,18 @@ constructor(public popUpservice: PopupServiceService,public dialogRef:MatDialog)
         this.done.push(result);
         console.log(this.done);
       }
-    });
+      
+       }
+      }
+      
+       
+      
+      
+    );
   }
   RemoveArray(arrName:string,index: number){
     console.log(arrName,index);
+
     if(arrName==='todo')
     
       {
@@ -79,13 +89,12 @@ constructor(public popUpservice: PopupServiceService,public dialogRef:MatDialog)
       else
       { 
         let beginning=this.doing.slice(0,index);
-        beginning.push(...this.doing.slice(index+1,this.done.length));
+        beginning.push(...this.doing.slice(index+1,this.doing.length));
         this.doing=beginning;
       }
-      //  this.BeginningArray.push(arrName.slice(index,index+1));
-      //  this.EndArray.push(arrName.slice(index+1,arrName.length));
-      //  return 
+     
   }
+
   title = 'CAT-drag-drop';
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {

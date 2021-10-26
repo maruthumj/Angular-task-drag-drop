@@ -1,6 +1,8 @@
 <div class="inputs">
     <h2>{{type}}</h2>
-    <input id="element-id" type="text" class="form-control" placeholder="Enter the element" [(ngModel)]=text>
-    <button *ngIf="text!=''"   [mat-dialog-close]="text">Add</button>
-    
+    <input id="element-id" type="text" class="form-control" placeholder="Enter the element" [(ngModel)]=text>    
 </div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" style="color:red;background-color:white; border: 1px solid red; ">Cancel</button>
+    <button mat-button style="color:#388E3C; background-color:white; border: 1px solid #388E3C" *ngIf="text!=''" [mat-dialog-close]="text" cdkFocusInitial>Add</button>
+    </div>

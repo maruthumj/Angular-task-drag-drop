@@ -16,6 +16,8 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
+  it('should ')
+
   it(`should have as title 'CAT-drag-drop'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
