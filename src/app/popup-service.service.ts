@@ -4,7 +4,6 @@ import {  BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-
 export class PopupServiceService {
   private type = new BehaviorSubject('');
   typeVal = this.type.asObservable();

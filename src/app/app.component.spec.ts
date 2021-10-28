@@ -1,33 +1,37 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  
+    
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    
+   await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent     
       ],
+    
     }).compileComponents();
+   
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+        
+        test(`array values should be as same as 'doing' 'done' 'todo'`, () => {
+           let component: AppComponent;
+    let fixture: ComponentFixture<AppComponent>;
+        
+          fixture = TestBed.createComponent(AppComponent);
+          component = fixture.componentInstance;
+          expect(component.doing).toBe("doing");
+          expect(component.done).toBe("done");
+          expect(component.todo).toBe("todo");
+        });
+      });
 
-  it('should ')
+ 
 
-  it(`should have as title 'CAT-drag-drop'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('CAT-drag-drop');
-  });
+  
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('CAT-drag-drop app is running!');
-  });
-});
+
+
+

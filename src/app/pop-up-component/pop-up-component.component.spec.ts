@@ -17,9 +17,6 @@ describe('PopUpComponentComponent', () => {
     fixture = TestBed.createComponent(PopUpComponentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  }); 
 });
+

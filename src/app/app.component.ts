@@ -9,7 +9,7 @@ import { PopupServiceService } from './popup-service.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  templateUrl: 'app.component.html',
   styleUrls: ['./app.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   
@@ -27,22 +27,18 @@ done:string[]=['Feed Cat','Ride Bike'];
     "Take a shower",
     "Check e-mail",
     "Walk dog"];
-
-
+    
 constructor(public popUpservice: PopupServiceService,public dialogRef:MatDialog){
   
 }
   
-
-
  openDialog(val:string){
    this.popUpservice.changeType(val);
    console.log(val);
-    const dialog = this.dialogRef.open(PopUpComponentComponent, 
-      
+    const dialog = this.dialogRef.open(PopUpComponentComponent,  
       );
     dialog.afterClosed().subscribe(result => {
-     // console.log(result.length);
+    
        const isWhitespace = (result|| '').trim().length === 0;
        const isValid = !isWhitespace;
       
@@ -92,8 +88,7 @@ constructor(public popUpservice: PopupServiceService,public dialogRef:MatDialog)
         beginning.push(...this.doing.slice(index+1,this.doing.length));
         this.doing=beginning;
       }
-     
-  }
+       }
 
   title = 'CAT-drag-drop';
   drop(event: CdkDragDrop<string[]>) {
@@ -107,9 +102,7 @@ constructor(public popUpservice: PopupServiceService,public dialogRef:MatDialog)
                         event.currentIndex);
                         console.log(this.todo);
                           console.log(this.doing);
-                        console.log(this.done);
-                      
-                        
+                        console.log(this.done);       
     }
   }
 }
